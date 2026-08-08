@@ -1,0 +1,10 @@
+# Core dependency for LLM calls (Groq path); OpenAI client optional if you switch providers
+groq>=0.9.0
+openai>=1.0.0
+
+# Utilities
+tqdm>=4.66.0
+
+# Additional dependencies for CacheForge
+scikit-learn>=1.3.0
+joblib>=1.3.0

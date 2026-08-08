@@ -1,0 +1,50 @@
+{
+  "LRU": {
+    "ipc": 0.40161210917226786,
+    "total_hit_rate": 0.4022000809816345,
+    "load_hit_rate": 0.30814162383640975,
+    "rfo_hit_rate": 0.24685808383106686,
+    "prefetch_hit_rate": 0.21152786621273542,
+    "writeback_hit_rate": 0.9997765164163066
+  },
+  "Hawkeye": {
+    "ipc": 0.41308119018676265,
+    "total_hit_rate": 0.33690366197839805,
+    "load_hit_rate": 0.2955997168968978,
+    "rfo_hit_rate": 0.2827764145309378,
+    "prefetch_hit_rate": 0.20578066511070808,
+    "writeback_hit_rate": 0.6969196700267941
+  },
+  "Less is More": {
+    "ipc": 0.4096031307146287,
+    "total_hit_rate": 0.2661528973409336,
+    "load_hit_rate": 0.2339757220119533,
+    "rfo_hit_rate": 0.3310437667449625,
+    "prefetch_hit_rate": 0.10494095009487506,
+    "writeback_hit_rate": 0.5322433560727556
+  },
+  "Multiperspective": {
+    "ipc": 0.4129078016816868,
+    "total_hit_rate": 0.25117045185131526,
+    "load_hit_rate": 0.21760860513895683,
+    "rfo_hit_rate": 0.2904931169318574,
+    "prefetch_hit_rate": 0.1496492633631235,
+    "writeback_hit_rate": 0.45436219947470713
+  },
+  "Reordering-based Cache Replacement": {
+    "ipc": 0.40680825222401124,
+    "total_hit_rate": 0.32346879576147775,
+    "load_hit_rate": 0.29941072951354203,
+    "rfo_hit_rate": 0.25514571323500645,
+    "prefetch_hit_rate": 0.227057397706308,
+    "writeback_hit_rate": 0.6863544672167144
+  },
+  "Ship++": {
+    "ipc": 0.41204888774910364,
+    "total_hit_rate": 0.296522108614212,
+    "load_hit_rate": 0.29771083629844647,
+    "rfo_hit_rate": 0.25735699686744856,
+    "prefetch_hit_rate": 0.1899049129284352,
+    "writeback_hit_rate": 0.6176003350130083
+  }
+}

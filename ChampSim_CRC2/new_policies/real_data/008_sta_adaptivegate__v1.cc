@@ -1,0 +1,261 @@
+#include <cstdint>
+#include "../inc/champsim_crc2.h"
+
+#define NUM_CORE 1
+#define LLC_SETS (NUM_CORE * 2048)
+#define LLC_WAYS 16
+
+// Access type tags (CRC2 convention)
+static constexpr uint32_t ACCESS_LOAD      = 0;
+static constexpr uint32_t ACCESS_RFO       = 1;
+static constexpr uint32_t ACCESS_PREFETCH  = 2;
+static constexpr uint32_t ACCESS_WRITEBACK = 3;
+
+// ---------------- Tunables (refined) ----------------
+static constexpr uint8_t  PC_BITS            = 8;     // 256-entry per-PC tables
+static constexpr uint32_t PC_SIZE            = (1u << PC_BITS);
+
+// Ticket predictor (2-bit: 0..3)
+static constexpr uint8_t  TICKET_INIT        = 1;     // slightly cold start
+static constexpr uint8_t  TICKET_WARM_TH     = 2;     // >=2 => warm PC (likely multi-use)
+
+// Run detector (per-PC ±1/±2 forward steps), confidence 0..3
+static constexpr uint8_t  LINE_LOW_BITS      = 12;    // low bits of line# for stride check
+static constexpr uint8_t  STREAM_CONF_TH     = 2;     // >=2 => treat as stream near-bypass
+
+// Ages: 0=young(MRU)..3=old(LRU)
+static constexpr uint8_t  AGE_MAX            = 3;
+static constexpr uint8_t  AGE_YOUNG          = 1;     // insertion depth for warm PCs
+
+// Adaptive multi-hit promotion thresholds
+static constexpr uint8_t  HITS_WARM_PROMOTE  = 2;     // warm PCs promote on 2nd demand hit
+static constexpr uint8_t  HITS_COLD_PROMOTE  = 3;     // cold PCs promote on 3rd demand hit
+
+// Sampled-set density for ticket training
+static constexpr uint8_t  SAMP_LOG2          = 6;     // 1 out of 64 sets
+
+// ---------------- Per-line state (compact) ----------------
+static uint8_t AGE    [LLC_SETS][LLC_WAYS];   // 2b: 0..3
+static uint8_t HITCNT [LLC_SETS][LLC_WAYS];   // 2b: 0..3 (3=3+)
+static uint8_t STATUS [LLC_SETS][LLC_WAYS];   // 2b: 0=normal,1=stream,2=quarantine
+static uint8_t PCSIG  [LLC_SETS][LLC_WAYS];   // 8b: PC index (PC_BITS=8)
+static uint8_t LVALID [LLC_SETS][LLC_WAYS];   // 1b: track valid resident for training
+
+enum : uint8_t { ST_NORMAL=0, ST_STREAM=1, ST_QUAR=2 };
+
+// ---------------- Global per-PC state ----------------
+static uint8_t  TICKET[PC_SIZE];          // 2b: 0..3 (ticketed deadness)
+static uint16_t RG_LAST_LINE[PC_SIZE];    // low LINE_LOW_BITS of line#
+static uint8_t  RG_CONF[PC_SIZE];         // 2b confidence (0..3)
+static uint8_t  RG_LAST_ABS12[PC_SIZE];   // 1b: last step |delta| in {1,2}
+static uint8_t  RG_LAST_FWD[PC_SIZE];     // 1b: last step forward
+
+// ---------------- Helpers ----------------
+static inline uint32_t pc_index(uint64_t pc) {
+    uint64_t x = pc ^ (pc >> 7) ^ (pc >> 15) ^ (pc >> 23);
+    return static_cast<uint32_t>(x) & (PC_SIZE - 1);
+}
+static inline uint16_t line_lowN(uint64_t paddr) {
+    return static_cast<uint16_t>((paddr >> 6) & ((1u << LINE_LOW_BITS) - 1));
+}
+static inline bool is_demand(uint32_t type) {
+    return (type == ACCESS_LOAD) || (type == ACCESS_RFO);
+}
+static inline void sat_inc(uint8_t &v, uint8_t maxv) { if (v < maxv) v++; }
+static inline void sat_dec(uint8_t &v) { if (v > 0) v--; }
+static inline bool is_sampled_set(uint32_t set) {
+    return ((set & ((1u << SAMP_LOG2) - 1)) == 0);
+}
+static inline void age_all(uint32_t set) {
+    for (uint32_t w = 0; w < LLC_WAYS; w++) {
+        if (AGE[set][w] < AGE_MAX) AGE[set][w]++;
+    }
+}
+// Update per-PC run detector on a demand access; returns updated confidence
+static inline uint8_t update_runconf(uint64_t pc, uint64_t paddr) {
+    uint32_t idx = pc_index(pc);
+    uint16_t curr = line_lowN(paddr);
+    int16_t delta = static_cast<int16_t>(static_cast<int32_t>(curr) - static_cast<int32_t>(RG_LAST_LINE[idx]));
+    int16_t ad = (delta < 0) ? static_cast<int16_t>(-delta) : delta;
+    bool abs12 = (ad == 1) || (ad == 2);
+    bool fwd   = (delta > 0);
+
+    if (abs12 && fwd) {
+        if (RG_LAST_ABS12[idx] && RG_LAST_FWD[idx]) {
+            sat_inc(RG_CONF[idx], 3);          // two consecutive forward ±1/±2 steps
+        } else {
+            if (RG_CONF[idx] == 0) RG_CONF[idx] = 1;
+            RG_LAST_ABS12[idx] = 1;
+            RG_LAST_FWD[idx]   = 1;
+        }
+    } else {
+        sat_dec(RG_CONF[idx]);                 // decay on break/backward/large stride
+        RG_LAST_ABS12[idx] = 0;
+        RG_LAST_FWD[idx]   = 0;
+    }
+    RG_LAST_LINE[idx] = curr;
+    return RG_CONF[idx];
+}
+
+// Compare candidates: true if a is more evictable than b
+static inline bool more_evictable(uint32_t set, uint32_t a, uint32_t b) {
+    bool sa = (STATUS[set][a] != ST_NORMAL);
+    bool sb = (STATUS[set][b] != ST_NORMAL);
+    if (sa != sb) return sa; // evict sentinels first
+
+    uint8_t ta = TICKET[ PCSIG[set][a] ];
+    uint8_t tb = TICKET[ PCSIG[set][b] ];
+    if (ta != tb) return (ta < tb); // evict colder-PC lines
+
+    uint8_t ha = HITCNT[set][a];
+    uint8_t hb = HITCNT[set][b];
+    if (ha != hb) return (ha < hb); // evict fewer-hit lines
+
+    return AGE[set][a] > AGE[set][b]; // older is more evictable
+}
+
+// Initialize replacement state
+void InitReplacementState() {
+    for (uint32_t s = 0; s < LLC_SETS; s++) {
+        for (uint32_t w = 0; w < LLC_WAYS; w++) {
+            AGE[s][w]    = AGE_MAX;
+            HITCNT[s][w] = 0;
+            STATUS[s][w] = ST_NORMAL;
+            PCSIG[s][w]  = 0;
+            LVALID[s][w] = 0;
+        }
+    }
+    for (uint32_t i = 0; i < PC_SIZE; i++) {
+        TICKET[i]        = TICKET_INIT;
+        RG_LAST_LINE[i]  = 0;
+        RG_CONF[i]       = 0;
+        RG_LAST_ABS12[i] = 0;
+        RG_LAST_FWD[i]   = 0;
+    }
+}
+
+// Find victim in the set
+uint32_t GetVictimInSet(
+    uint32_t /*cpu*/,
+    uint32_t set,
+    const BLOCK *current_set,
+    uint64_t /*PC*/,
+    uint64_t /*paddr*/,
+    uint32_t /*type*/
+) {
+    // If any invalid way exists, return it immediately
+    for (uint32_t w = 0; w < LLC_WAYS; w++) {
+        if (!current_set[w].valid) return w;
+    }
+
+    // Composite priority selection
+    uint32_t best = 0;
+    for (uint32_t w = 1; w < LLC_WAYS; w++) {
+        if (more_evictable(set, w, best)) best = w;
+    }
+    return best;
+}
+
+// Update replacement state
+void UpdateReplacementState(
+    uint32_t /*cpu*/,
+    uint32_t set,
+    uint32_t way,
+    uint64_t paddr,
+    uint64_t PC,
+    uint64_t /*victim_addr*/,
+    uint32_t type,
+    uint8_t hit
+) {
+    // Age all lines once per access (bounded)
+    age_all(set);
+
+    uint32_t pc_idx = pc_index(PC);
+
+    // Update run detector only on demand accesses (hit or miss)
+    uint8_t run_conf = 0;
+    if (is_demand(type)) {
+        run_conf = update_runconf(PC, paddr);
+    }
+
+    if (hit) {
+        // On hit: strict multi-hit promotion (no promote on first demand hit or any prefetch hit)
+        if (is_demand(type)) {
+            // If stream tag but pattern broke, clear the tag (enables reuse to surface)
+            if (STATUS[set][way] == ST_STREAM && run_conf < STREAM_CONF_TH) {
+                STATUS[set][way] = ST_NORMAL;
+            }
+            if (HITCNT[set][way] < 3) HITCNT[set][way]++;
+
+            uint8_t th = (TICKET[PCSIG[set][way]] >= TICKET_WARM_TH) ? HITS_WARM_PROMOTE : HITS_COLD_PROMOTE;
+            if (HITCNT[set][way] >= th) {
+                AGE[set][way] = 0;               // MRU on meeting threshold
+                STATUS[set][way] = ST_NORMAL;    // shed sentinel
+                sat_inc(TICKET[PCSIG[set][way]], 3); // reinforce PC as warm
+            }
+        }
+        // Prefetch hits: no promotion, no counter change
+        return;
+    }
+
+    // Miss path: train on eviction (sampled sets only) before overwriting
+    if (is_sampled_set(set) && LVALID[set][way]) {
+        uint8_t prev_pc   = PCSIG[set][way];
+        uint8_t prev_hit  = HITCNT[set][way];
+        uint8_t prev_stat = STATUS[set][way];
+
+        if (prev_hit >= 2) {
+            sat_inc(TICKET[prev_pc], 3); // multi-hit reward
+        } else {
+            // Penalize single-use, especially stream/quarantine
+            if (prev_stat == ST_STREAM || prev_stat == ST_QUAR || prev_hit == 0) {
+                sat_dec(TICKET[prev_pc]);
+                sat_dec(TICKET[prev_pc]); // stronger penalty for streamy deadness
+            } else {
+                sat_dec(TICKET[prev_pc]); // mild penalty otherwise
+            }
+        }
+    }
+
+    // Install new line metadata
+    PCSIG[set][way]  = static_cast<uint8_t>(pc_idx);
+    HITCNT[set][way] = 0;
+    LVALID[set][way] = 1;
+
+    if (type == ACCESS_PREFETCH) {
+        // Prefetch: always quarantined at hard tail
+        STATUS[set][way] = ST_QUAR;
+        AGE[set][way]    = AGE_MAX;
+        return;
+    }
+
+    if (type == ACCESS_WRITEBACK) {
+        // Writebacks: never bypass; neutral insert at tail
+        STATUS[set][way] = ST_NORMAL;
+        AGE[set][way]    = AGE_MAX;
+        return;
+    }
+
+    // Demand miss: stream near-bypass if confident; else ticketed insertion
+    if (run_conf >= STREAM_CONF_TH) {
+        STATUS[set][way] = ST_STREAM;   // stream sentinel
+        AGE[set][way]    = AGE_MAX;     // hard tail (near-bypass)
+    } else {
+        STATUS[set][way] = ST_NORMAL;
+        if (TICKET[pc_idx] >= TICKET_WARM_TH) {
+            AGE[set][way] = AGE_YOUNG;  // slightly young for warm PCs
+        } else {
+            AGE[set][way] = AGE_MAX;    // tail for cold PCs
+        }
+    }
+}
+
+// Print end-of-simulation statistics
+void PrintStats() {
+    // --- KEEP THIS FUNCTION BLANK ---
+}
+
+// Print periodic (heartbeat) statistics
+void PrintStats_Heartbeat() {
+    // --- KEEP THIS FUNCTION BLANK ---
+}

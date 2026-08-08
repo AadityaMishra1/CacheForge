@@ -1,0 +1,26 @@
+{
+  "LRU": {
+    "description": "Least Recently Used (LRU) replacement policy evicts the cache line that has not been accessed for the longest time. It assumes temporal locality—recently used data is more likely to be used again. This simple stack-based heuristic is hardware-friendly but can perform poorly under non-recurring access patterns or streaming workloads.",
+    "file_path": "../ChampSim_CRC2/champ_repl_pol/lru.cc"
+  },
+  "Hawkeye": {
+    "description": "Hawkeye is a predictive replacement policy that leverages Belady's MIN algorithm as an oracle during training phases. It classifies memory accesses as cache-friendly or cache-averse using past reuse behavior. Hawkeye tracks the hit/miss patterns of PCs and predicts future reuse, evicting lines unlikely to be reused. This learned policy often outperforms heuristics in workloads with high variance in reuse patterns.",
+    "file_path": "../ChampSim_CRC2/champ_repl_pol/hawkeye_final.cc"
+  },
+  "Less is More": {
+    "description": "The Less is More (LIME) policy maintains a smaller but more predictable working set in cache by selectively caching only highly reusable data. It introduces filters or confidence thresholds to reduce cache pollution, especially effective in workloads with sparse reuse or high noise. By avoiding over-commitment, it reduces thrashing and improves effective cache utilization in irregular access patterns.",
+    "file_path": "../ChampSim_CRC2/champ_repl_pol/lime.cc"
+  },
+  "Multiperspective": {
+    "description": "Multiperspective replacement integrates multiple heuristics—temporal (recency), spatial (block adjacency), and frequency (access counts)—to make informed eviction decisions. It balances short-term reuse with longer-term utility predictions, offering adaptability across diverse workloads. This hybrid strategy is especially useful in mixed compute and memory-intensive applications.",
+    "file_path": "../ChampSim_CRC2/champ_repl_pol/dancrc2.cc"
+  },
+  "Reordering-based Cache Replacement": {
+    "description": "This policy reorders memory accesses to increase temporal locality before they reach the cache. By dynamically reshaping the access stream (e.g., via scheduling queues or address clustering), it reduces conflict misses and enhances reuse. The effectiveness is tied to how well reordering aligns with the underlying data reuse patterns of the workload.",
+    "file_path": "../ChampSim_CRC2/champ_repl_pol/red.cc"
+  },
+  "Ship++": {
+    "description": "SHiP++ (Signature-based Hit Predictor) is an enhancement over the SHiP policy, which uses PC-based signatures and outcome history to track line usefulness. SHiP++ incorporates refined predictors, decay mechanisms, and hybrid reuse classification to better handle pathological cases (e.g., thrashing). It provides strong performance across workloads with dynamic and complex reuse patterns.",
+    "file_path": "../ChampSim_CRC2/champ_repl_pol/ship++.cc"
+  }
+}

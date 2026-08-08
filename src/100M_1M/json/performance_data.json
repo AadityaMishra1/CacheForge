@@ -1,0 +1,1402 @@
+{
+  "calculix": {
+    "Ship++": {
+      "weighted": {
+        "ipc": 2.07806,
+        "total_hit_rate": 0.00988593155893536,
+        "load_hit_rate": 0.0,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.0014204545454545455,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 2670,
+          "weight": 1.0,
+          "ipc": 2.07806,
+          "total_hit_rate": 0.00988593155893536,
+          "load_hit_rate": 0.0,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.0014204545454545455,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/calculix_2670B.trace.gz"
+        }
+      ]
+    },
+    "Less is More": {
+      "weighted": {
+        "ipc": 2.07806,
+        "total_hit_rate": 0.0038022813688212928,
+        "load_hit_rate": 0.0,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.0,
+        "writeback_hit_rate": 0.4166666666666667
+      },
+      "simpoints": [
+        {
+          "index": 2670,
+          "weight": 1.0,
+          "ipc": 2.07806,
+          "total_hit_rate": 0.0038022813688212928,
+          "load_hit_rate": 0.0,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.0,
+          "writeback_hit_rate": 0.4166666666666667,
+          "trace": "../ChampSim_CRC2/traces_gz/calculix_2670B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 2.07806,
+        "total_hit_rate": 0.00988593155893536,
+        "load_hit_rate": 0.0,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.0014204545454545455,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 2670,
+          "weight": 1.0,
+          "ipc": 2.07806,
+          "total_hit_rate": 0.00988593155893536,
+          "load_hit_rate": 0.0,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.0014204545454545455,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/calculix_2670B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 2.07806,
+        "total_hit_rate": 0.00988593155893536,
+        "load_hit_rate": 0.0,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.0014204545454545455,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 2670,
+          "weight": 1.0,
+          "ipc": 2.07806,
+          "total_hit_rate": 0.00988593155893536,
+          "load_hit_rate": 0.0,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.0014204545454545455,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/calculix_2670B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 2.07806,
+        "total_hit_rate": 0.004182509505703422,
+        "load_hit_rate": 0.0,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.0007102272727272727,
+        "writeback_hit_rate": 0.4166666666666667
+      },
+      "simpoints": [
+        {
+          "index": 2670,
+          "weight": 1.0,
+          "ipc": 2.07806,
+          "total_hit_rate": 0.004182509505703422,
+          "load_hit_rate": 0.0,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.0007102272727272727,
+          "writeback_hit_rate": 0.4166666666666667,
+          "trace": "../ChampSim_CRC2/traces_gz/calculix_2670B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 2.07806,
+        "total_hit_rate": 0.00988593155893536,
+        "load_hit_rate": 0.0,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.0014204545454545455,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 2670,
+          "weight": 1.0,
+          "ipc": 2.07806,
+          "total_hit_rate": 0.00988593155893536,
+          "load_hit_rate": 0.0,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.0014204545454545455,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/calculix_2670B.trace.gz"
+        }
+      ]
+    }
+  },
+  "zeusmp": {
+    "Ship++": {
+      "weighted": {
+        "ipc": 1.35567,
+        "total_hit_rate": 0.4668032135716297,
+        "load_hit_rate": 0.6478884744193645,
+        "rfo_hit_rate": 0.500458330895403,
+        "prefetch_hit_rate": 0.3179066194921557,
+        "writeback_hit_rate": 0.6638332475684054
+      },
+      "simpoints": [
+        {
+          "index": 300,
+          "weight": 1.0,
+          "ipc": 1.35567,
+          "total_hit_rate": 0.4668032135716297,
+          "load_hit_rate": 0.6478884744193645,
+          "rfo_hit_rate": 0.500458330895403,
+          "prefetch_hit_rate": 0.3179066194921557,
+          "writeback_hit_rate": 0.6638332475684054,
+          "trace": "../ChampSim_CRC2/traces_gz/zeusmp_300B.trace.gz"
+        }
+      ]
+    },
+    "Less is More": {
+      "weighted": {
+        "ipc": 1.33731,
+        "total_hit_rate": 0.4847553922301524,
+        "load_hit_rate": 0.2235175879396985,
+        "rfo_hit_rate": 0.49512713655070184,
+        "prefetch_hit_rate": 0.2443903804484931,
+        "writeback_hit_rate": 0.9743138500635324
+      },
+      "simpoints": [
+        {
+          "index": 300,
+          "weight": 1.0,
+          "ipc": 1.33731,
+          "total_hit_rate": 0.4847553922301524,
+          "load_hit_rate": 0.2235175879396985,
+          "rfo_hit_rate": 0.49512713655070184,
+          "prefetch_hit_rate": 0.2443903804484931,
+          "writeback_hit_rate": 0.9743138500635324,
+          "trace": "../ChampSim_CRC2/traces_gz/zeusmp_300B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 1.35984,
+        "total_hit_rate": 0.4722957178857159,
+        "load_hit_rate": 0.686599344978166,
+        "rfo_hit_rate": 0.502314393446886,
+        "prefetch_hit_rate": 0.3319113309733652,
+        "writeback_hit_rate": 0.6498154348558105
+      },
+      "simpoints": [
+        {
+          "index": 300,
+          "weight": 1.0,
+          "ipc": 1.35984,
+          "total_hit_rate": 0.4722957178857159,
+          "load_hit_rate": 0.686599344978166,
+          "rfo_hit_rate": 0.502314393446886,
+          "prefetch_hit_rate": 0.3319113309733652,
+          "writeback_hit_rate": 0.6498154348558105,
+          "trace": "../ChampSim_CRC2/traces_gz/zeusmp_300B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 1.36174,
+        "total_hit_rate": 0.48133133865352823,
+        "load_hit_rate": 0.6925586580027732,
+        "rfo_hit_rate": 0.5012710239056517,
+        "prefetch_hit_rate": 0.3369981577392332,
+        "writeback_hit_rate": 0.6762850445024681
+      },
+      "simpoints": [
+        {
+          "index": 300,
+          "weight": 1.0,
+          "ipc": 1.36174,
+          "total_hit_rate": 0.48133133865352823,
+          "load_hit_rate": 0.6925586580027732,
+          "rfo_hit_rate": 0.5012710239056517,
+          "prefetch_hit_rate": 0.3369981577392332,
+          "writeback_hit_rate": 0.6762850445024681,
+          "trace": "../ChampSim_CRC2/traces_gz/zeusmp_300B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 1.33693,
+        "total_hit_rate": 0.3886973394118601,
+        "load_hit_rate": 0.2790757454586999,
+        "rfo_hit_rate": 0.4924358165872433,
+        "prefetch_hit_rate": 0.2510493524095344,
+        "writeback_hit_rate": 0.5646290484479626
+      },
+      "simpoints": [
+        {
+          "index": 300,
+          "weight": 1.0,
+          "ipc": 1.33693,
+          "total_hit_rate": 0.3886973394118601,
+          "load_hit_rate": 0.2790757454586999,
+          "rfo_hit_rate": 0.4924358165872433,
+          "prefetch_hit_rate": 0.2510493524095344,
+          "writeback_hit_rate": 0.5646290484479626,
+          "trace": "../ChampSim_CRC2/traces_gz/zeusmp_300B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 1.37096,
+        "total_hit_rate": 0.5771371750615971,
+        "load_hit_rate": 0.8928464204809083,
+        "rfo_hit_rate": 0.503341654964373,
+        "prefetch_hit_rate": 0.34536664708805853,
+        "writeback_hit_rate": 0.9994472610833682
+      },
+      "simpoints": [
+        {
+          "index": 300,
+          "weight": 1.0,
+          "ipc": 1.37096,
+          "total_hit_rate": 0.5771371750615971,
+          "load_hit_rate": 0.8928464204809083,
+          "rfo_hit_rate": 0.503341654964373,
+          "prefetch_hit_rate": 0.34536664708805853,
+          "writeback_hit_rate": 0.9994472610833682,
+          "trace": "../ChampSim_CRC2/traces_gz/zeusmp_300B.trace.gz"
+        }
+      ]
+    }
+  },
+  "namd": {
+    "Less is More": {
+      "weighted": {
+        "ipc": 1.05609,
+        "total_hit_rate": 0.053928911888873755,
+        "load_hit_rate": 0.058386411889596604,
+        "rfo_hit_rate": 0.2978723404255319,
+        "prefetch_hit_rate": 0.007070469007777516,
+        "writeback_hit_rate": 0.20701454234388367
+      },
+      "simpoints": [
+        {
+          "index": 400,
+          "weight": 1.0,
+          "ipc": 1.05609,
+          "total_hit_rate": 0.053928911888873755,
+          "load_hit_rate": 0.058386411889596604,
+          "rfo_hit_rate": 0.2978723404255319,
+          "prefetch_hit_rate": 0.007070469007777516,
+          "writeback_hit_rate": 0.20701454234388367,
+          "trace": "../ChampSim_CRC2/traces_gz/namd_400B.trace.gz"
+        }
+      ]
+    },
+    "Ship++": {
+      "weighted": {
+        "ipc": 1.05614,
+        "total_hit_rate": 0.20166122004357298,
+        "load_hit_rate": 0.0727176220806794,
+        "rfo_hit_rate": 0.3191489361702128,
+        "prefetch_hit_rate": 0.03770028275212064,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 400,
+          "weight": 1.0,
+          "ipc": 1.05614,
+          "total_hit_rate": 0.20166122004357298,
+          "load_hit_rate": 0.0727176220806794,
+          "rfo_hit_rate": 0.3191489361702128,
+          "prefetch_hit_rate": 0.03770028275212064,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/namd_400B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 1.05614,
+        "total_hit_rate": 0.20179738562091504,
+        "load_hit_rate": 0.0732484076433121,
+        "rfo_hit_rate": 0.3191489361702128,
+        "prefetch_hit_rate": 0.03770028275212064,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 400,
+          "weight": 1.0,
+          "ipc": 1.05614,
+          "total_hit_rate": 0.20179738562091504,
+          "load_hit_rate": 0.0732484076433121,
+          "rfo_hit_rate": 0.3191489361702128,
+          "prefetch_hit_rate": 0.03770028275212064,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/namd_400B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 1.05614,
+        "total_hit_rate": 0.20179738562091504,
+        "load_hit_rate": 0.0732484076433121,
+        "rfo_hit_rate": 0.3191489361702128,
+        "prefetch_hit_rate": 0.03770028275212064,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 400,
+          "weight": 1.0,
+          "ipc": 1.05614,
+          "total_hit_rate": 0.20179738562091504,
+          "load_hit_rate": 0.0732484076433121,
+          "rfo_hit_rate": 0.3191489361702128,
+          "prefetch_hit_rate": 0.03770028275212064,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/namd_400B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 1.05614,
+        "total_hit_rate": 0.20179738562091504,
+        "load_hit_rate": 0.0732484076433121,
+        "rfo_hit_rate": 0.3191489361702128,
+        "prefetch_hit_rate": 0.03770028275212064,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 400,
+          "weight": 1.0,
+          "ipc": 1.05614,
+          "total_hit_rate": 0.20179738562091504,
+          "load_hit_rate": 0.0732484076433121,
+          "rfo_hit_rate": 0.3191489361702128,
+          "prefetch_hit_rate": 0.03770028275212064,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/namd_400B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 1.05596,
+        "total_hit_rate": 0.15236928104575165,
+        "load_hit_rate": 0.019639065817409766,
+        "rfo_hit_rate": 0.23404255319148937,
+        "prefetch_hit_rate": 0.033694627709707825,
+        "writeback_hit_rate": 0.7938408896492729
+      },
+      "simpoints": [
+        {
+          "index": 400,
+          "weight": 1.0,
+          "ipc": 1.05596,
+          "total_hit_rate": 0.15236928104575165,
+          "load_hit_rate": 0.019639065817409766,
+          "rfo_hit_rate": 0.23404255319148937,
+          "prefetch_hit_rate": 0.033694627709707825,
+          "writeback_hit_rate": 0.7938408896492729,
+          "trace": "../ChampSim_CRC2/traces_gz/namd_400B.trace.gz"
+        }
+      ]
+    }
+  },
+  "lbm": {
+    "Ship++": {
+      "weighted": {
+        "ipc": 0.667435,
+        "total_hit_rate": 0.24795907082132598,
+        "load_hit_rate": 0.04709524403944576,
+        "rfo_hit_rate": 0.16176743307808764,
+        "prefetch_hit_rate": 0.05786311515724302,
+        "writeback_hit_rate": 0.40127532410940764
+      },
+      "simpoints": [
+        {
+          "index": 94,
+          "weight": 1.0,
+          "ipc": 0.667435,
+          "total_hit_rate": 0.24795907082132598,
+          "load_hit_rate": 0.04709524403944576,
+          "rfo_hit_rate": 0.16176743307808764,
+          "prefetch_hit_rate": 0.05786311515724302,
+          "writeback_hit_rate": 0.40127532410940764,
+          "trace": "../ChampSim_CRC2/traces_gz/lbm_94B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 0.649428,
+        "total_hit_rate": 0.06276166036933185,
+        "load_hit_rate": 0.028269418035041294,
+        "rfo_hit_rate": 0.05849336211758101,
+        "prefetch_hit_rate": 0.03357007303467709,
+        "writeback_hit_rate": 0.07803014499349942
+      },
+      "simpoints": [
+        {
+          "index": 94,
+          "weight": 1.0,
+          "ipc": 0.649428,
+          "total_hit_rate": 0.06276166036933185,
+          "load_hit_rate": 0.028269418035041294,
+          "rfo_hit_rate": 0.05849336211758101,
+          "prefetch_hit_rate": 0.03357007303467709,
+          "writeback_hit_rate": 0.07803014499349942,
+          "trace": "../ChampSim_CRC2/traces_gz/lbm_94B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 0.708126,
+        "total_hit_rate": 0.24604116999444933,
+        "load_hit_rate": 0.0005880868248359414,
+        "rfo_hit_rate": 0.215937655418904,
+        "prefetch_hit_rate": 0.0006186076193876029,
+        "writeback_hit_rate": 0.35942458352473144
+      },
+      "simpoints": [
+        {
+          "index": 94,
+          "weight": 1.0,
+          "ipc": 0.708126,
+          "total_hit_rate": 0.24604116999444933,
+          "load_hit_rate": 0.0005880868248359414,
+          "rfo_hit_rate": 0.215937655418904,
+          "prefetch_hit_rate": 0.0006186076193876029,
+          "writeback_hit_rate": 0.35942458352473144,
+          "trace": "../ChampSim_CRC2/traces_gz/lbm_94B.trace.gz"
+        }
+      ]
+    },
+    "Less is More": {
+      "weighted": {
+        "ipc": 0.696992,
+        "total_hit_rate": 0.28802349082756346,
+        "load_hit_rate": 0.00015566976918190514,
+        "rfo_hit_rate": 0.1980758037399052,
+        "prefetch_hit_rate": 1.2164295845406398e-05,
+        "writeback_hit_rate": 0.4761675988577709
+      },
+      "simpoints": [
+        {
+          "index": 94,
+          "weight": 1.0,
+          "ipc": 0.696992,
+          "total_hit_rate": 0.28802349082756346,
+          "load_hit_rate": 0.00015566976918190514,
+          "rfo_hit_rate": 0.1980758037399052,
+          "prefetch_hit_rate": 1.2164295845406398e-05,
+          "writeback_hit_rate": 0.4761675988577709,
+          "trace": "../ChampSim_CRC2/traces_gz/lbm_94B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 0.680992,
+        "total_hit_rate": 0.3259159986304575,
+        "load_hit_rate": 0.0381183879093199,
+        "rfo_hit_rate": 0.26401076622984704,
+        "prefetch_hit_rate": 0.0469352142238276,
+        "writeback_hit_rate": 0.4841374195070969
+      },
+      "simpoints": [
+        {
+          "index": 94,
+          "weight": 1.0,
+          "ipc": 0.680992,
+          "total_hit_rate": 0.3259159986304575,
+          "load_hit_rate": 0.0381183879093199,
+          "rfo_hit_rate": 0.26401076622984704,
+          "prefetch_hit_rate": 0.0469352142238276,
+          "writeback_hit_rate": 0.4841374195070969,
+          "trace": "../ChampSim_CRC2/traces_gz/lbm_94B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 0.604,
+        "total_hit_rate": 0.44501187343363463,
+        "load_hit_rate": 0.05342729463698044,
+        "rfo_hit_rate": 0.023509131294228717,
+        "prefetch_hit_rate": 0.0649569903045331,
+        "writeback_hit_rate": 0.999948164299784
+      },
+      "simpoints": [
+        {
+          "index": 94,
+          "weight": 1.0,
+          "ipc": 0.604,
+          "total_hit_rate": 0.44501187343363463,
+          "load_hit_rate": 0.05342729463698044,
+          "rfo_hit_rate": 0.023509131294228717,
+          "prefetch_hit_rate": 0.0649569903045331,
+          "writeback_hit_rate": 0.999948164299784,
+          "trace": "../ChampSim_CRC2/traces_gz/lbm_94B.trace.gz"
+        }
+      ]
+    }
+  },
+  "milc": {
+    "Less is More": {
+      "weighted": {
+        "ipc": 0.556835,
+        "total_hit_rate": 0.06974132981166743,
+        "load_hit_rate": 6.959910913140312e-06,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.01628332904731141,
+        "writeback_hit_rate": 0.29195896654694314
+      },
+      "simpoints": [
+        {
+          "index": 360,
+          "weight": 1.0,
+          "ipc": 0.556835,
+          "total_hit_rate": 0.06974132981166743,
+          "load_hit_rate": 6.959910913140312e-06,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.01628332904731141,
+          "writeback_hit_rate": 0.29195896654694314,
+          "trace": "../ChampSim_CRC2/traces_gz/milc_360B.trace.gz"
+        }
+      ]
+    },
+    "Ship++": {
+      "weighted": {
+        "ipc": 0.553934,
+        "total_hit_rate": 0.017704686664741235,
+        "load_hit_rate": 4.573705765553831e-05,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.006130424883478649,
+        "writeback_hit_rate": 0.06977382616898645
+      },
+      "simpoints": [
+        {
+          "index": 360,
+          "weight": 1.0,
+          "ipc": 0.553934,
+          "total_hit_rate": 0.017704686664741235,
+          "load_hit_rate": 4.573705765553831e-05,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.006130424883478649,
+          "writeback_hit_rate": 0.06977382616898645,
+          "trace": "../ChampSim_CRC2/traces_gz/milc_360B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 0.555123,
+        "total_hit_rate": 0.16016607731345658,
+        "load_hit_rate": 0.0002077795031982137,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.009568357553225321,
+        "writeback_hit_rate": 0.729950571994924
+      },
+      "simpoints": [
+        {
+          "index": 360,
+          "weight": 1.0,
+          "ipc": 0.555123,
+          "total_hit_rate": 0.16016607731345658,
+          "load_hit_rate": 0.0002077795031982137,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.009568357553225321,
+          "writeback_hit_rate": 0.729950571994924,
+          "trace": "../ChampSim_CRC2/traces_gz/milc_360B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 0.551258,
+        "total_hit_rate": 0.21337056726237316,
+        "load_hit_rate": 5.966047225241153e-06,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 7.150016118895987e-05,
+        "writeback_hit_rate": 0.9999892343032778
+      },
+      "simpoints": [
+        {
+          "index": 360,
+          "weight": 1.0,
+          "ipc": 0.551258,
+          "total_hit_rate": 0.21337056726237316,
+          "load_hit_rate": 5.966047225241153e-06,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 7.150016118895987e-05,
+          "writeback_hit_rate": 0.9999892343032778,
+          "trace": "../ChampSim_CRC2/traces_gz/milc_360B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 0.558268,
+        "total_hit_rate": 0.0005704531126011858,
+        "load_hit_rate": 6.661191896013824e-05,
+        "rfo_hit_rate": 0.0032712182788249325,
+        "prefetch_hit_rate": 0.0005914969954712531,
+        "writeback_hit_rate": 0.0006984245748559079
+      },
+      "simpoints": [
+        {
+          "index": 360,
+          "weight": 1.0,
+          "ipc": 0.558268,
+          "total_hit_rate": 0.0005704531126011858,
+          "load_hit_rate": 6.661191896013824e-05,
+          "rfo_hit_rate": 0.0032712182788249325,
+          "prefetch_hit_rate": 0.0005914969954712531,
+          "writeback_hit_rate": 0.0006984245748559079,
+          "trace": "../ChampSim_CRC2/traces_gz/milc_360B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 0.552244,
+        "total_hit_rate": 0.037673084227362,
+        "load_hit_rate": 4.275446112973195e-05,
+        "rfo_hit_rate": 0.0,
+        "prefetch_hit_rate": 0.0054410888449838496,
+        "writeback_hit_rate": 0.16485645961989015
+      },
+      "simpoints": [
+        {
+          "index": 360,
+          "weight": 1.0,
+          "ipc": 0.552244,
+          "total_hit_rate": 0.037673084227362,
+          "load_hit_rate": 4.275446112973195e-05,
+          "rfo_hit_rate": 0.0,
+          "prefetch_hit_rate": 0.0054410888449838496,
+          "writeback_hit_rate": 0.16485645961989015,
+          "trace": "../ChampSim_CRC2/traces_gz/milc_360B.trace.gz"
+        }
+      ]
+    }
+  },
+  "astar": {
+    "Less is More": {
+      "weighted": {
+        "ipc": 0.495792,
+        "total_hit_rate": 0.5670672385206703,
+        "load_hit_rate": 0.5452661700133208,
+        "rfo_hit_rate": 0.5229927270108735,
+        "prefetch_hit_rate": 0.31518823688323716,
+        "writeback_hit_rate": 0.8401131834362735
+      },
+      "simpoints": [
+        {
+          "index": 163,
+          "weight": 1.0,
+          "ipc": 0.495792,
+          "total_hit_rate": 0.5670672385206703,
+          "load_hit_rate": 0.5452661700133208,
+          "rfo_hit_rate": 0.5229927270108735,
+          "prefetch_hit_rate": 0.31518823688323716,
+          "writeback_hit_rate": 0.8401131834362735,
+          "trace": "../ChampSim_CRC2/traces_gz/astar_163B.trace.gz"
+        }
+      ]
+    },
+    "Ship++": {
+      "weighted": {
+        "ipc": 0.49504000000000004,
+        "total_hit_rate": 0.4596303321060657,
+        "load_hit_rate": 0.5267901193961122,
+        "rfo_hit_rate": 0.14920429178368258,
+        "prefetch_hit_rate": 0.4160257729307063,
+        "writeback_hit_rate": 0.5823576661879609
+      },
+      "simpoints": [
+        {
+          "index": 163,
+          "weight": 1.0,
+          "ipc": 0.49504,
+          "total_hit_rate": 0.4596303321060657,
+          "load_hit_rate": 0.5267901193961122,
+          "rfo_hit_rate": 0.14920429178368258,
+          "prefetch_hit_rate": 0.4160257729307063,
+          "writeback_hit_rate": 0.5823576661879609,
+          "trace": "../ChampSim_CRC2/traces_gz/astar_163B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 0.495606,
+        "total_hit_rate": 0.6649744007264871,
+        "load_hit_rate": 0.5361958952769372,
+        "rfo_hit_rate": 0.47435048101849187,
+        "prefetch_hit_rate": 0.49682126442323143,
+        "writeback_hit_rate": 1.0
+      },
+      "simpoints": [
+        {
+          "index": 163,
+          "weight": 1.0,
+          "ipc": 0.495606,
+          "total_hit_rate": 0.6649744007264871,
+          "load_hit_rate": 0.5361958952769372,
+          "rfo_hit_rate": 0.47435048101849187,
+          "prefetch_hit_rate": 0.49682126442323143,
+          "writeback_hit_rate": 1.0,
+          "trace": "../ChampSim_CRC2/traces_gz/astar_163B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 0.495696,
+        "total_hit_rate": 0.6294618217972153,
+        "load_hit_rate": 0.5471319563215367,
+        "rfo_hit_rate": 0.36687021141770837,
+        "prefetch_hit_rate": 0.5222070082733883,
+        "writeback_hit_rate": 0.9028691392582225
+      },
+      "simpoints": [
+        {
+          "index": 163,
+          "weight": 1.0,
+          "ipc": 0.495696,
+          "total_hit_rate": 0.6294618217972153,
+          "load_hit_rate": 0.5471319563215367,
+          "rfo_hit_rate": 0.36687021141770837,
+          "prefetch_hit_rate": 0.5222070082733883,
+          "writeback_hit_rate": 0.9028691392582225,
+          "trace": "../ChampSim_CRC2/traces_gz/astar_163B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 0.490604,
+        "total_hit_rate": 0.42281055475081236,
+        "load_hit_rate": 0.38489560633845094,
+        "rfo_hit_rate": 0.4188809678116224,
+        "prefetch_hit_rate": 0.2581423168943428,
+        "writeback_hit_rate": 0.6083281609405236
+      },
+      "simpoints": [
+        {
+          "index": 163,
+          "weight": 1.0,
+          "ipc": 0.490604,
+          "total_hit_rate": 0.42281055475081236,
+          "load_hit_rate": 0.38489560633845094,
+          "rfo_hit_rate": 0.4188809678116224,
+          "prefetch_hit_rate": 0.2581423168943428,
+          "writeback_hit_rate": 0.6083281609405236,
+          "trace": "../ChampSim_CRC2/traces_gz/astar_163B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 0.493554,
+        "total_hit_rate": 0.5702573476884897,
+        "load_hit_rate": 0.4719807915272216,
+        "rfo_hit_rate": 0.4410328787245993,
+        "prefetch_hit_rate": 0.4293869207181841,
+        "writeback_hit_rate": 0.8309357771368068
+      },
+      "simpoints": [
+        {
+          "index": 163,
+          "weight": 1.0,
+          "ipc": 0.493554,
+          "total_hit_rate": 0.5702573476884897,
+          "load_hit_rate": 0.4719807915272216,
+          "rfo_hit_rate": 0.4410328787245993,
+          "prefetch_hit_rate": 0.4293869207181841,
+          "writeback_hit_rate": 0.8309357771368068,
+          "trace": "../ChampSim_CRC2/traces_gz/astar_163B.trace.gz"
+        }
+      ]
+    }
+  },
+  "hmmer": {
+    "Less is More": {
+      "weighted": {
+        "ipc": 1.14414,
+        "total_hit_rate": 0.327794499523341,
+        "load_hit_rate": 0.6425715164564749,
+        "rfo_hit_rate": 0.7747034089202584,
+        "prefetch_hit_rate": 0.06813021724092566,
+        "writeback_hit_rate": 0.36560113376899456
+      },
+      "simpoints": [
+        {
+          "index": 7,
+          "weight": 1.0,
+          "ipc": 1.14414,
+          "total_hit_rate": 0.327794499523341,
+          "load_hit_rate": 0.6425715164564749,
+          "rfo_hit_rate": 0.7747034089202584,
+          "prefetch_hit_rate": 0.06813021724092566,
+          "writeback_hit_rate": 0.36560113376899456,
+          "trace": "../ChampSim_CRC2/traces_gz/hmmer_7B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 1.14633,
+        "total_hit_rate": 0.7628308914672927,
+        "load_hit_rate": 0.8034253973152291,
+        "rfo_hit_rate": 0.589756344796516,
+        "prefetch_hit_rate": 0.6428210667492881,
+        "writeback_hit_rate": 0.9152232107708055
+      },
+      "simpoints": [
+        {
+          "index": 7,
+          "weight": 1.0,
+          "ipc": 1.14633,
+          "total_hit_rate": 0.7628308914672927,
+          "load_hit_rate": 0.8034253973152291,
+          "rfo_hit_rate": 0.589756344796516,
+          "prefetch_hit_rate": 0.6428210667492881,
+          "writeback_hit_rate": 0.9152232107708055,
+          "trace": "../ChampSim_CRC2/traces_gz/hmmer_7B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 1.14387,
+        "total_hit_rate": 0.5466722369129817,
+        "load_hit_rate": 0.6215674174637458,
+        "rfo_hit_rate": 0.4748460729839315,
+        "prefetch_hit_rate": 0.5640984288394123,
+        "writeback_hit_rate": 0.5567146943810198
+      },
+      "simpoints": [
+        {
+          "index": 7,
+          "weight": 1.0,
+          "ipc": 1.14387,
+          "total_hit_rate": 0.5466722369129817,
+          "load_hit_rate": 0.6215674174637458,
+          "rfo_hit_rate": 0.4748460729839315,
+          "prefetch_hit_rate": 0.5640984288394123,
+          "writeback_hit_rate": 0.5567146943810198,
+          "trace": "../ChampSim_CRC2/traces_gz/hmmer_7B.trace.gz"
+        }
+      ]
+    },
+    "Ship++": {
+      "weighted": {
+        "ipc": 1.14568,
+        "total_hit_rate": 0.6520180209407739,
+        "load_hit_rate": 0.7523148148148148,
+        "rfo_hit_rate": 0.6492528908244481,
+        "prefetch_hit_rate": 0.5899963924198375,
+        "writeback_hit_rate": 0.6987924139582643
+      },
+      "simpoints": [
+        {
+          "index": 7,
+          "weight": 1.0,
+          "ipc": 1.14568,
+          "total_hit_rate": 0.6520180209407739,
+          "load_hit_rate": 0.7523148148148148,
+          "rfo_hit_rate": 0.6492528908244481,
+          "prefetch_hit_rate": 0.5899963924198375,
+          "writeback_hit_rate": 0.6987924139582643,
+          "trace": "../ChampSim_CRC2/traces_gz/hmmer_7B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 1.14579,
+        "total_hit_rate": 0.7590535492667639,
+        "load_hit_rate": 0.7845133425883078,
+        "rfo_hit_rate": 0.5352061120288332,
+        "prefetch_hit_rate": 0.6090093454770777,
+        "writeback_hit_rate": 0.9527333805737082
+      },
+      "simpoints": [
+        {
+          "index": 7,
+          "weight": 1.0,
+          "ipc": 1.14579,
+          "total_hit_rate": 0.7590535492667639,
+          "load_hit_rate": 0.7845133425883078,
+          "rfo_hit_rate": 0.5352061120288332,
+          "prefetch_hit_rate": 0.6090093454770777,
+          "writeback_hit_rate": 0.9527333805737082,
+          "trace": "../ChampSim_CRC2/traces_gz/hmmer_7B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 1.14593,
+        "total_hit_rate": 0.7694779706458914,
+        "load_hit_rate": 0.7819780898009566,
+        "rfo_hit_rate": 0.5284671121790059,
+        "prefetch_hit_rate": 0.579921059332824,
+        "writeback_hit_rate": 0.999973755347348
+      },
+      "simpoints": [
+        {
+          "index": 7,
+          "weight": 1.0,
+          "ipc": 1.14593,
+          "total_hit_rate": 0.7694779706458914,
+          "load_hit_rate": 0.7819780898009566,
+          "rfo_hit_rate": 0.5284671121790059,
+          "prefetch_hit_rate": 0.579921059332824,
+          "writeback_hit_rate": 0.999973755347348,
+          "trace": "../ChampSim_CRC2/traces_gz/hmmer_7B.trace.gz"
+        }
+      ]
+    }
+  },
+  "gcc": {
+    "Less is More": {
+      "weighted": {
+        "ipc": 0.268387,
+        "total_hit_rate": 0.15455341576378992,
+        "load_hit_rate": 0.11551220924393082,
+        "rfo_hit_rate": 0.08877665982237352,
+        "prefetch_hit_rate": 0.06039780693220455,
+        "writeback_hit_rate": 0.3957978327859046
+      },
+      "simpoints": [
+        {
+          "index": 13,
+          "weight": 1.0,
+          "ipc": 0.268387,
+          "total_hit_rate": 0.15455341576378992,
+          "load_hit_rate": 0.11551220924393082,
+          "rfo_hit_rate": 0.08877665982237352,
+          "prefetch_hit_rate": 0.06039780693220455,
+          "writeback_hit_rate": 0.3957978327859046,
+          "trace": "../ChampSim_CRC2/traces_gz/gcc_13B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 0.269569,
+        "total_hit_rate": 0.09375212544385685,
+        "load_hit_rate": 0.1098884071530395,
+        "rfo_hit_rate": 0.08870867489086003,
+        "prefetch_hit_rate": 0.06887362107010267,
+        "writeback_hit_rate": 0.12596651429261305
+      },
+      "simpoints": [
+        {
+          "index": 13,
+          "weight": 1.0,
+          "ipc": 0.269569,
+          "total_hit_rate": 0.09375212544385685,
+          "load_hit_rate": 0.1098884071530395,
+          "rfo_hit_rate": 0.08870867489086003,
+          "prefetch_hit_rate": 0.06887362107010267,
+          "writeback_hit_rate": 0.12596651429261305,
+          "trace": "../ChampSim_CRC2/traces_gz/gcc_13B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 0.265352,
+        "total_hit_rate": 0.16129575631880613,
+        "load_hit_rate": 0.09133410662581794,
+        "rfo_hit_rate": 0.0895716456287985,
+        "prefetch_hit_rate": 0.05616750001731072,
+        "writeback_hit_rate": 0.4543145152989453
+      },
+      "simpoints": [
+        {
+          "index": 13,
+          "weight": 1.0,
+          "ipc": 0.265352,
+          "total_hit_rate": 0.16129575631880613,
+          "load_hit_rate": 0.09133410662581794,
+          "rfo_hit_rate": 0.0895716456287985,
+          "prefetch_hit_rate": 0.05616750001731072,
+          "writeback_hit_rate": 0.4543145152989453,
+          "trace": "../ChampSim_CRC2/traces_gz/gcc_13B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 0.263166,
+        "total_hit_rate": 0.2685987715114658,
+        "load_hit_rate": 0.04879668588683077,
+        "rfo_hit_rate": 0.07156514813091738,
+        "prefetch_hit_rate": 0.03553274885389399,
+        "writeback_hit_rate": 0.9999272410777655
+      },
+      "simpoints": [
+        {
+          "index": 13,
+          "weight": 1.0,
+          "ipc": 0.263166,
+          "total_hit_rate": 0.2685987715114658,
+          "load_hit_rate": 0.04879668588683077,
+          "rfo_hit_rate": 0.07156514813091738,
+          "prefetch_hit_rate": 0.03553274885389399,
+          "writeback_hit_rate": 0.9999272410777655,
+          "trace": "../ChampSim_CRC2/traces_gz/gcc_13B.trace.gz"
+        }
+      ]
+    },
+    "Ship++": {
+      "weighted": {
+        "ipc": 0.268365,
+        "total_hit_rate": 0.1549818706882721,
+        "load_hit_rate": 0.11939433799132446,
+        "rfo_hit_rate": 0.1186818378868101,
+        "prefetch_hit_rate": 0.08274252590463341,
+        "writeback_hit_rate": 0.33722878778321125
+      },
+      "simpoints": [
+        {
+          "index": 13,
+          "weight": 1.0,
+          "ipc": 0.268365,
+          "total_hit_rate": 0.1549818706882721,
+          "load_hit_rate": 0.11939433799132446,
+          "rfo_hit_rate": 0.1186818378868101,
+          "prefetch_hit_rate": 0.08274252590463341,
+          "writeback_hit_rate": 0.33722878778321125,
+          "trace": "../ChampSim_CRC2/traces_gz/gcc_13B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 0.269706,
+        "total_hit_rate": 0.14870920982353786,
+        "load_hit_rate": 0.12055038173351927,
+        "rfo_hit_rate": 0.11355317607984763,
+        "prefetch_hit_rate": 0.09777943962048437,
+        "writeback_hit_rate": 0.28549295252785434
+      },
+      "simpoints": [
+        {
+          "index": 13,
+          "weight": 1.0,
+          "ipc": 0.269706,
+          "total_hit_rate": 0.14870920982353786,
+          "load_hit_rate": 0.12055038173351927,
+          "rfo_hit_rate": 0.11355317607984763,
+          "prefetch_hit_rate": 0.09777943962048437,
+          "writeback_hit_rate": 0.28549295252785434,
+          "trace": "../ChampSim_CRC2/traces_gz/gcc_13B.trace.gz"
+        }
+      ]
+    }
+  },
+  "omnetpp": {
+    "LRU": {
+      "weighted": {
+        "ipc": 0.250822,
+        "total_hit_rate": 0.4130733708111626,
+        "load_hit_rate": 0.24104205765135062,
+        "rfo_hit_rate": 0.23879080606209657,
+        "prefetch_hit_rate": 0.22858403557760834,
+        "writeback_hit_rate": 0.9992193794066283
+      },
+      "simpoints": [
+        {
+          "index": 340,
+          "weight": 1.0,
+          "ipc": 0.250822,
+          "total_hit_rate": 0.4130733708111626,
+          "load_hit_rate": 0.24104205765135062,
+          "rfo_hit_rate": 0.23879080606209657,
+          "prefetch_hit_rate": 0.22858403557760834,
+          "writeback_hit_rate": 0.9992193794066283,
+          "trace": "../ChampSim_CRC2/traces_gz/omnetpp_340B.trace.gz"
+        }
+      ]
+    },
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 0.251618,
+        "total_hit_rate": 0.3473056404695426,
+        "load_hit_rate": 0.2582523785744496,
+        "rfo_hit_rate": 0.2498993088559875,
+        "prefetch_hit_rate": 0.24302875344036395,
+        "writeback_hit_rate": 0.6658950524617595
+      },
+      "simpoints": [
+        {
+          "index": 340,
+          "weight": 1.0,
+          "ipc": 0.251618,
+          "total_hit_rate": 0.3473056404695426,
+          "load_hit_rate": 0.2582523785744496,
+          "rfo_hit_rate": 0.2498993088559875,
+          "prefetch_hit_rate": 0.24302875344036395,
+          "writeback_hit_rate": 0.6658950524617595,
+          "trace": "../ChampSim_CRC2/traces_gz/omnetpp_340B.trace.gz"
+        }
+      ]
+    },
+    "Less is More": {
+      "weighted": {
+        "ipc": 0.254881,
+        "total_hit_rate": 0.32094838017726823,
+        "load_hit_rate": 0.2932307761177916,
+        "rfo_hit_rate": 0.33249390510846294,
+        "prefetch_hit_rate": 0.09585876224544546,
+        "writeback_hit_rate": 0.7032395791319421
+      },
+      "simpoints": [
+        {
+          "index": 340,
+          "weight": 1.0,
+          "ipc": 0.254881,
+          "total_hit_rate": 0.32094838017726823,
+          "load_hit_rate": 0.2932307761177916,
+          "rfo_hit_rate": 0.33249390510846294,
+          "prefetch_hit_rate": 0.09585876224544546,
+          "writeback_hit_rate": 0.7032395791319421,
+          "trace": "../ChampSim_CRC2/traces_gz/omnetpp_340B.trace.gz"
+        }
+      ]
+    },
+    "Ship++": {
+      "weighted": {
+        "ipc": 0.254739,
+        "total_hit_rate": 0.3167680696021731,
+        "load_hit_rate": 0.2892099596320125,
+        "rfo_hit_rate": 0.3450147004482432,
+        "prefetch_hit_rate": 0.13027577260707787,
+        "writeback_hit_rate": 0.6359209163376518
+      },
+      "simpoints": [
+        {
+          "index": 340,
+          "weight": 1.0,
+          "ipc": 0.254739,
+          "total_hit_rate": 0.3167680696021731,
+          "load_hit_rate": 0.2892099596320125,
+          "rfo_hit_rate": 0.3450147004482432,
+          "prefetch_hit_rate": 0.13027577260707787,
+          "writeback_hit_rate": 0.6359209163376518,
+          "trace": "../ChampSim_CRC2/traces_gz/omnetpp_340B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 0.254065,
+        "total_hit_rate": 0.36603769538607284,
+        "load_hit_rate": 0.28364607301821865,
+        "rfo_hit_rate": 0.37214393981923316,
+        "prefetch_hit_rate": 0.19755673505271654,
+        "writeback_hit_rate": 0.7466145856789294
+      },
+      "simpoints": [
+        {
+          "index": 340,
+          "weight": 1.0,
+          "ipc": 0.254065,
+          "total_hit_rate": 0.36603769538607284,
+          "load_hit_rate": 0.28364607301821865,
+          "rfo_hit_rate": 0.37214393981923316,
+          "prefetch_hit_rate": 0.19755673505271654,
+          "writeback_hit_rate": 0.7466145856789294,
+          "trace": "../ChampSim_CRC2/traces_gz/omnetpp_340B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 0.252699,
+        "total_hit_rate": 0.253759497084876,
+        "load_hit_rate": 0.27216431548171954,
+        "rfo_hit_rate": 0.31320807571482884,
+        "prefetch_hit_rate": 0.07388819027418894,
+        "writeback_hit_rate": 0.48507612811020334
+      },
+      "simpoints": [
+        {
+          "index": 340,
+          "weight": 1.0,
+          "ipc": 0.252699,
+          "total_hit_rate": 0.253759497084876,
+          "load_hit_rate": 0.27216431548171954,
+          "rfo_hit_rate": 0.31320807571482884,
+          "prefetch_hit_rate": 0.07388819027418894,
+          "writeback_hit_rate": 0.48507612811020334,
+          "trace": "../ChampSim_CRC2/traces_gz/omnetpp_340B.trace.gz"
+        }
+      ]
+    }
+  },
+  "mcf": {
+    "Reordering-based Cache Replacement": {
+      "weighted": {
+        "ipc": 0.117575,
+        "total_hit_rate": 0.4394736213088344,
+        "load_hit_rate": 0.476422231030968,
+        "rfo_hit_rate": 0.35142139946532536,
+        "prefetch_hit_rate": 0.3505672101207125,
+        "writeback_hit_rate": 0.6362681653042689
+      },
+      "simpoints": [
+        {
+          "index": 46,
+          "weight": 1.0,
+          "ipc": 0.117575,
+          "total_hit_rate": 0.4394736213088344,
+          "load_hit_rate": 0.476422231030968,
+          "rfo_hit_rate": 0.35142139946532536,
+          "prefetch_hit_rate": 0.3505672101207125,
+          "writeback_hit_rate": 0.6362681653042689,
+          "trace": "../ChampSim_CRC2/traces_gz/mcf_46B.trace.gz"
+        }
+      ]
+    },
+    "Less is More": {
+      "weighted": {
+        "ipc": 0.11810500000000002,
+        "total_hit_rate": 0.3909140332971883,
+        "load_hit_rate": 0.4611099187786248,
+        "rfo_hit_rate": 0.6003956858715174,
+        "prefetch_hit_rate": 0.24207813484751026,
+        "writeback_hit_rate": 0.6515602071256444
+      },
+      "simpoints": [
+        {
+          "index": 46,
+          "weight": 1.0,
+          "ipc": 0.118105,
+          "total_hit_rate": 0.3909140332971883,
+          "load_hit_rate": 0.4611099187786248,
+          "rfo_hit_rate": 0.6003956858715174,
+          "prefetch_hit_rate": 0.24207813484751026,
+          "writeback_hit_rate": 0.6515602071256444,
+          "trace": "../ChampSim_CRC2/traces_gz/mcf_46B.trace.gz"
+        }
+      ]
+    },
+    "Multiperspective": {
+      "weighted": {
+        "ipc": 0.12107400000000001,
+        "total_hit_rate": 0.40284935125025995,
+        "load_hit_rate": 0.488200794932707,
+        "rfo_hit_rate": 0.6636001344408701,
+        "prefetch_hit_rate": 0.24482576454636007,
+        "writeback_hit_rate": 0.6322768841592223
+      },
+      "simpoints": [
+        {
+          "index": 46,
+          "weight": 1.0,
+          "ipc": 0.121074,
+          "total_hit_rate": 0.40284935125025995,
+          "load_hit_rate": 0.488200794932707,
+          "rfo_hit_rate": 0.6636001344408701,
+          "prefetch_hit_rate": 0.24482576454636007,
+          "writeback_hit_rate": 0.6322768841592223,
+          "trace": "../ChampSim_CRC2/traces_gz/mcf_46B.trace.gz"
+        }
+      ]
+    },
+    "Hawkeye": {
+      "weighted": {
+        "ipc": 0.122501,
+        "total_hit_rate": 0.4557885324326498,
+        "load_hit_rate": 0.5205546471928769,
+        "rfo_hit_rate": 0.3053788428022028,
+        "prefetch_hit_rate": 0.33719095173617186,
+        "writeback_hit_rate": 0.6593195179500958
+      },
+      "simpoints": [
+        {
+          "index": 46,
+          "weight": 1.0,
+          "ipc": 0.122501,
+          "total_hit_rate": 0.4557885324326498,
+          "load_hit_rate": 0.5205546471928769,
+          "rfo_hit_rate": 0.3053788428022028,
+          "prefetch_hit_rate": 0.33719095173617186,
+          "writeback_hit_rate": 0.6593195179500958,
+          "trace": "../ChampSim_CRC2/traces_gz/mcf_46B.trace.gz"
+        }
+      ]
+    },
+    "Ship++": {
+      "weighted": {
+        "ipc": 0.12113900000000001,
+        "total_hit_rate": 0.43780867014463015,
+        "load_hit_rate": 0.5216520535530556,
+        "rfo_hit_rate": 0.3300415475875982,
+        "prefetch_hit_rate": 0.2589877685916442,
+        "writeback_hit_rate": 0.7868211680161953
+      },
+      "simpoints": [
+        {
+          "index": 46,
+          "weight": 1.0,
+          "ipc": 0.121139,
+          "total_hit_rate": 0.43780867014463015,
+          "load_hit_rate": 0.5216520535530556,
+          "rfo_hit_rate": 0.3300415475875982,
+          "prefetch_hit_rate": 0.2589877685916442,
+          "writeback_hit_rate": 0.7868211680161953,
+          "trace": "../ChampSim_CRC2/traces_gz/mcf_46B.trace.gz"
+        }
+      ]
+    },
+    "LRU": {
+      "weighted": {
+        "ipc": 0.116342,
+        "total_hit_rate": 0.45867336318388247,
+        "load_hit_rate": 0.45387542093959626,
+        "rfo_hit_rate": 0.30940756849134227,
+        "prefetch_hit_rate": 0.3249036790884406,
+        "writeback_hit_rate": 0.9992601286448953
+      },
+      "simpoints": [
+        {
+          "index": 46,
+          "weight": 1.0,
+          "ipc": 0.116342,
+          "total_hit_rate": 0.45867336318388247,
+          "load_hit_rate": 0.45387542093959626,
+          "rfo_hit_rate": 0.30940756849134227,
+          "prefetch_hit_rate": 0.3249036790884406,
+          "writeback_hit_rate": 0.9992601286448953,
+          "trace": "../ChampSim_CRC2/traces_gz/mcf_46B.trace.gz"
+        }
+      ]
+    }
+  }
+}

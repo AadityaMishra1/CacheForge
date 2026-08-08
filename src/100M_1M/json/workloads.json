@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "os": "Linux 3.13.11 generic x86_64 GNU/Linux",
+    "bbv_tool": "Valgrind exp-bbv 3.11.0",
+    "simpoint_version": "3.2",
+    "hardware_prefetchers": "disabled",
+    "cpu_summary": "Intel Xeon E5-2420 @ 1.90GHz (6 cores, 12 threads), 15MB LLC"
+  },
+  "workloads": {
+    "gcc": {
+      "description": "Production C compiler building 166.i. Pointer-rich IR (trees/CFG) with frequent traversals of graphs, symbol tables, and hash maps. Deep, data-dependent control flow with many small unpredictable branches and indirect calls. Memory access is irregular with poor spatial locality and moderate temporal reuse of hot metadata. Significant I-cache pressure across compiler passes; strong phase behavior (parsing, optimization, register allocation, code generation).",
+      "simpoints": [
+        { "weight": 0.323077, "index": 13, "trace": "../ChampSim_CRC2/traces_gz/gcc_13B.trace.gz" },
+        { "weight": 0.153846, "index": 39 },
+        { "weight": 0.138462, "index": 56 },
+        { "weight": 0.138462, "index": 22 },
+        { "weight": 0.0923077, "index": 26 },
+        { "weight": 0.0923077, "index": 30 },
+        { "weight": 0.0307692, "index": 2 },
+        { "weight": 0.0307692, "index": 3 }
+      ]
+    },
+    "mcf": {
+      "description": "Minimum Cost Flow solver using network simplex. Pointer chasing, deep data dependencies, and highly irregular sparse memory accesses. Poor cache locality and low IPC due to frequent long-latency misses. Classical memory-bound workload that is harsh on recency/frequency-based replacement; access patterns are hard to predict and favor adaptive or learned policies.",
+      "simpoints": [
+        { "weight": 0.329897, "index": 46, "trace": "../ChampSim_CRC2/traces_gz/mcf_46B.trace.gz" },
+        { "weight": 0.175258, "index": 250 },
+        { "weight": 0.154639, "index": 158 },
+        { "weight": 0.147766, "index": 186 },
+        { "weight": 0.113402, "index": 18 },
+        { "weight": 0.04811, "index": 219 },
+        { "weight": 0.0171821, "index": 235 },
+        { "weight": 0.0137457, "index": 270 }
+      ]
+    },
+    "milc": {
+      "description": "Quantum Chromodynamics (QCD) on 4D lattices. Extensive FP in nested loops, combining regular stencil-like sweeps with intermittent pointer dereferencing and indirect indexing. Phases of high spatial reuse alternate with irregular segments, leading to inconsistent locality. Strong candidate for evaluating policy responsiveness to phase changes.",
+      "simpoints": [
+        { "weight": 0.240631, "index": 360, "trace": "../ChampSim_CRC2/traces_gz/milc_360B.trace.gz" },
+        { "weight": 0.206114, "index": 744 },
+        { "weight": 0.197239, "index": 409 },
+        { "weight": 0.129191, "index": 599 },
+        { "weight": 0.12426, "index": 88 },
+        { "weight": 0.0769231, "index": 545 },
+        { "weight": 0.0157791, "index": 714 },
+        { "weight": 0.00986193, "index": 243 }
+      ]
+    },
+    "namd": {
+      "description": "Molecular dynamics using Charm++/message-driven decomposition. In single-thread traces, shows force computations over patches with neighbor lists. Semi-regular access within patches but irregular across neighbor indices; mixed gather/scatter to coordinates and forces. FP-heavy kernels; moderate branching from cutoffs/exclusions. Sensitive to cache hierarchy and TLB due to large working set.",
+      "simpoints": [
+        { "weight": 0.181818, "index": 400, "trace": "../ChampSim_CRC2/traces_gz/namd_400B.trace.gz" },
+        { "weight": 0.135698, "index": 851 },
+        { "weight": 0.110421, "index": 1907 },
+        { "weight": 0.109978, "index": 1276 },
+        { "weight": 0.103769, "index": 533 },
+        { "weight": 0.102439, "index": 1522 },
+        { "weight": 0.0922395, "index": 1 },
+        { "weight": 0.0682927, "index": 782 },
+        { "weight": 0.0501109, "index": 794 },
+        { "weight": 0.0452328, "index": 566 }
+      ]
+    },
+    "hmmer": {
+      "description": "Profile HMM sequence analysis using dynamic programming (Viterbi/Forward). Tight integer loops over DP matrices with banding; high spatial locality across rows/columns and good cache reuse within tiles. Branches mostly predictable; some transforms (log/exp) appear in certain phases. Prefetch-friendly and amenable to SIMD; can be bandwidth bound with large models.",
+      "simpoints": [
+        { "weight": 0.317479, "index": 7, "trace": "../ChampSim_CRC2/traces_gz/hmmer_7B.trace.gz" },
+        { "weight": 0.243757, "index": 546 },
+        { "weight": 0.198573, "index": 397 },
+        { "weight": 0.134364, "index": 765 },
+        { "weight": 0.0570749, "index": 485 },
+        { "weight": 0.0356718, "index": 702 },
+        { "weight": 0.0118906, "index": 519 },
+        { "weight": 0.00118906, "index": 0 }
+      ]
+    },
+    "lbm": {
+      "description": "Lattice-Boltzmann Method for fluid dynamics with stencil-based updates on 3D grids. Dense, regular memory access with high spatial locality and limited temporal reuse. Large working sets and repetitive neighbor accesses stress bandwidth; prefetch alignment matters. Deterministic access strides expose weaknesses in replacement that fails to retain blocks until reuse.",
+      "simpoints": [
+        { "weight": 0.583797, "index": 94, "trace": "../ChampSim_CRC2/traces_gz/lbm_94B.trace.gz" },
+        { "weight": 0.375695, "index": 1004 },
+        { "weight": 0.0349484, "index": 564 },
+        { "weight": 0.00555997, "index": 1074 }
+      ]
+    },
+    "omnetpp": {
+      "description": "Discrete-event network simulator with complex object-oriented structures. Heavy dynamic memory allocation, small objects, pointer dereferencing, and virtual calls. Access patterns exhibit low spatial/temporal locality; control flow highly unpredictable. Demanding workload for branch predictors and caches that rely on stable reuse signals.",
+      "simpoints": [
+        { "weight": 0.954463, "index": 340, "trace": "../ChampSim_CRC2/traces_gz/omnetpp_340B.trace.gz" },
+        { "weight": 0.0309654, "index": 17 },
+        { "weight": 0.010929, "index": 4 },
+        { "weight": 0.00364299, "index": 5 }
+      ]
+    },
+    "astar": {
+      "description": "A* pathfinding on large maps. Deeply nested control flow with frequent branching and speculative execution driven by unpredictable search decisions. Memory access is moderately sparse with irregular strides and limited reuse (open/closed lists, grids). Moderate trace size with limited temporal locality; strong stress for branch prediction and ILP; replacement policies must avoid pollution from control-dominated paths.",
+      "simpoints": [
+        { "weight": 0.452174, "index": 163, "trace": "../ChampSim_CRC2/traces_gz/astar_163B.trace.gz" },
+        { "weight": 0.22029, "index": 313 },
+        { "weight": 0.162319, "index": 23 },
+        { "weight": 0.127536, "index": 252 },
+        { "weight": 0.0231884, "index": 276 },
+        { "weight": 0.0144928, "index": 0 }
+      ]
+    },
+    "calculix": {
+      "description": "Finite element analysis performing element assembly and sparse linear solves. Irregular indirect addressing in stiffness/mass assembly and sparse matrix ops; moderate temporal reuse in element-local buffers. Solvers (e.g., CG/GMRES) exhibit streaming vector operations with sparse gathers/scatters. Branching moderate; memory latency significant due to sparse patterns.",
+      "simpoints": [
+        { "weight": 0.555355, "index": 2670, "trace": "../ChampSim_CRC2/traces_gz/calculix_2670B.trace.gz" },
+        { "weight": 0.207185, "index": 2655 },
+        { "weight": 0.0964754, "index": 3812 },
+        { "weight": 0.0607772, "index": 3971 },
+        { "weight": 0.0386353, "index": 2585 },
+        { "weight": 0.0248531, "index": 1384 },
+        { "weight": 0.0167194, "index": 1827 }
+      ]
+    },
+    "zeusmp": {
+      "description": "ZeusMP (ZEUS-MP): zeusmp is a computational fluid dynamics (CFD) application that solves three-dimensional magnetohydrodynamics (MHD) equations. It is designed to model astrophysical and space physics phenomena such as supernovae, accretion disks, and stellar atmospheres. The benchmark performs large-scale simulations on structured grids, using finite-difference methods and domain decomposition for parallelism. In SPEC CPU2006, zeusmp is used as a floating-point intensive workload, stressing memory bandwidth, cache hierarchies, and floating-point units due to its heavy use of multidimensional arrays and stencil-like computations.",
+      "simpoints": [
+        { "weight": 0, "index": 100 },
+        { "weight": 1, "index": 300, "trace": "../ChampSim_CRC2/traces_gz/zeusmp_300B.trace.gz" },
+        { "weight": 0, "index": 600 }
+      ]
+    }
+  }
+}

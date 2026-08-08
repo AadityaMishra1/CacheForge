@@ -1,0 +1,774 @@
+[
+  {
+    "status": "ok",
+    "name": "Hawkeye + HST-E TightGate Strict Ensemble (HST-TG)",
+    "explainer": {
+      "summary": "The HST-TG policy combines Hawkeye and HST-E techniques, using a conservative selector to adaptively choose between two modes based on cache access patterns, optimizing for both temporal and spatial locality.",
+      "policy_family": [
+        "Hawkeye",
+        "HST-E"
+      ],
+      "key_data_structures": [
+        {
+          "name": "rrpv_A",
+          "scope": "per-line",
+          "purpose": "Recency tracking for Mode A",
+          "bits_per_entry": 3
+        },
+        {
+          "name": "rrpv_B",
+          "scope": "per-line",
+          "purpose": "Recency tracking for Mode B",
+          "bits_per_entry": 3
+        },
+        {
+          "name": "PC-table",
+          "scope": "global",
+          "purpose": "Tracking program context signatures",
+          "bits_per_entry": 5
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "Confidence tracking for mode selection",
+          "bits_per_entry": 4
+        }
+      ],
+      "signals": [
+        "hit",
+        "miss",
+        "access type"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "temporal locality",
+          "spatial locality",
+          "SPEC CPU benchmarks"
+        ],
+        "weak_workloads": [
+          "random access patterns",
+          "streaming data"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": true,
+        "uses_ship": false,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": true,
+        "uses_insertion_bias": false,
+        "supports_bypass": false,
+        "metadata_bits_per_line": 6,
+        "metadata_bits_per_set": null,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy employs a conservative gating mechanism to balance between two operational modes, enhancing adaptability to varying workload characteristics."
+    },
+    "storage": {
+      "estimate_kb": 30.195
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.401984150501433,
+        "total_hit_rate": 0.23771343929988778,
+        "load_hit_rate": 0.20187359672023808,
+        "rfo_hit_rate": 0.2546687371024389,
+        "prefetch_hit_rate": 0.1875572347686289,
+        "writeback_hit_rate": 0.4842941241587907
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/000_hawkeye___hst_e_tightgate_strict_ensemble__hst_tg___v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Hawkeye + HST-E ColdStream-Fence Strict Ensemble (CSF)",
+    "explainer": {
+      "summary": "The policy combines Hawkeye's optimal eviction strategy with a dynamic ensemble approach, utilizing leader-follower sampling to adaptively manage cache lines based on access patterns.",
+      "policy_family": [
+        "Hawkeye",
+        "Dynamic Ensemble"
+      ],
+      "key_data_structures": [
+        {
+          "name": "rrpv_A",
+          "scope": "per-set",
+          "purpose": "Recency tracking for eviction",
+          "bits_per_entry": 3
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "Confidence scoring for mode selection",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "follower_bits",
+          "scope": "global",
+          "purpose": "Tracking mode B followers",
+          "bits_per_entry": 1
+        }
+      ],
+      "signals": [
+        "access type",
+        "set index",
+        "confidence score"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "temporal locality",
+          "streaming patterns"
+        ],
+        "weak_workloads": [
+          "random access",
+          "irregular patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": true,
+        "uses_ship": false,
+        "uses_pc_signature": false,
+        "uses_set_dueling": true,
+        "uses_global_counters": false,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 8,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy is designed to adaptively switch between two modes based on workload characteristics, optimizing cache performance."
+    },
+    "storage": {
+      "estimate_kb": 362.938
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.41387318364309617,
+        "total_hit_rate": 0.31759872865806543,
+        "load_hit_rate": 0.29112134024931585,
+        "rfo_hit_rate": 0.2919575908308317,
+        "prefetch_hit_rate": 0.19708141925164532,
+        "writeback_hit_rate": 0.6435100334133184
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/000_hawkeye___hst_e_coldstream_fence_strict_ensemble__csf___v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Hawkeye + HST-E ColdStream-Fence Strict Ensemble (CSF-AS)",
+    "explainer": {
+      "summary": "The policy combines Hawkeye's optimal eviction with a dynamic ensemble approach, utilizing two modes for different workload characteristics. It adapts to access patterns, optimizing for both hot and cold data.",
+      "policy_family": [
+        "Hawkeye",
+        "HST-E"
+      ],
+      "key_data_structures": [
+        {
+          "name": "rrpv_A",
+          "scope": "per-set",
+          "purpose": "tracks reuse prediction values for eviction",
+          "bits_per_entry": 3
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "stores confidence levels for mode selection",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "follower_bits",
+          "scope": "global",
+          "purpose": "tracks follower sets for mode B",
+          "bits_per_entry": 1
+        }
+      ],
+      "signals": [
+        "access type",
+        "set index",
+        "mode selection"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "temporal locality",
+          "streaming patterns"
+        ],
+        "weak_workloads": [
+          "random access",
+          "irregular patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": true,
+        "uses_ship": false,
+        "uses_pc_signature": false,
+        "uses_set_dueling": false,
+        "uses_global_counters": false,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 8,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy dynamically selects between two modes based on workload characteristics, enhancing adaptability."
+    },
+    "storage": {
+      "estimate_kb": 17.891
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.413828981106381,
+        "total_hit_rate": 0.31791234397049023,
+        "load_hit_rate": 0.29379045324138137,
+        "rfo_hit_rate": 0.29165157156221666,
+        "prefetch_hit_rate": 0.19747988095975397,
+        "writeback_hit_rate": 0.6428456488033624
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/002_hawkeye___hst_e_coldstream_fence_strict_ensemble__csf_as___v1.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Hawkeye + HST-E ColdStream-Fence Balanced-Gate Strict Ensemble (CSF-BG)",
+    "explainer": {
+      "summary": "The policy combines Hawkeye's optimal eviction with a dynamic ensemble approach, utilizing leader-follower sampling and selective biasing to adaptively manage cache entries based on access patterns.",
+      "policy_family": [
+        "Hawkeye",
+        "HST-E"
+      ],
+      "key_data_structures": [
+        {
+          "name": "rrpv_A",
+          "scope": "per-set",
+          "purpose": "tracks recency for eviction",
+          "bits_per_entry": 3
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "stores confidence for mode selection",
+          "bits_per_entry": 8
+        }
+      ],
+      "signals": [
+        "access type",
+        "set index",
+        "mode selection"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "streaming",
+          "temporal locality"
+        ],
+        "weak_workloads": [
+          "random access",
+          "irregular patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": true,
+        "uses_ship": true,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": false,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 8,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy is designed to adapt to varying workloads, balancing between optimal eviction strategies and dynamic adjustments based on access patterns."
+    },
+    "storage": {
+      "estimate_kb": 18.017
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.4133916943963423,
+        "total_hit_rate": 0.3374936835122075,
+        "load_hit_rate": 0.2958219485697688,
+        "rfo_hit_rate": 0.2806443226956575,
+        "prefetch_hit_rate": 0.2059902933588001,
+        "writeback_hit_rate": 0.7002607230860737
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/003_hawkeye___hst_e_coldstream_fence_balanced_gate_strict_ensemble__csf_bg___v2.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Hawkeye + HST-E ColdStream-Rescue Strict Ensemble (CSR)",
+    "explainer": {
+      "summary": "The policy combines Hawkeye's optimal eviction strategy with a dynamic ensemble approach, utilizing exclusive states for different modes to adaptively manage cache lines based on access patterns.",
+      "policy_family": [
+        "Hawkeye",
+        "HST-E"
+      ],
+      "key_data_structures": [
+        {
+          "name": "mode_conf_nibbles",
+          "scope": "per-set",
+          "purpose": "Stores per-set confidence for mode selection",
+          "bits_per_entry": 4
+        },
+        {
+          "name": "follower_bits",
+          "scope": "global",
+          "purpose": "Tracks follower assignments for mode B",
+          "bits_per_entry": 1
+        }
+      ],
+      "signals": [
+        "access type",
+        "set index",
+        "mode selection"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "temporal locality",
+          "streaming patterns"
+        ],
+        "weak_workloads": [
+          "random access patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": true,
+        "uses_ship": true,
+        "uses_pc_signature": false,
+        "uses_set_dueling": true,
+        "uses_global_counters": false,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 4,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy is designed to adaptively manage cache lines based on workload characteristics, leveraging a combination of strategies for optimal performance."
+    },
+    "storage": {
+      "estimate_kb": 30.195
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.4079753271277738,
+        "total_hit_rate": 0.2472003517644767,
+        "load_hit_rate": 0.22541833504576775,
+        "rfo_hit_rate": 0.27371608308138995,
+        "prefetch_hit_rate": 0.18344580697869795,
+        "writeback_hit_rate": 0.50304035173149
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/000_hawkeye___hst_e_coldstream_rescue_strict_ensemble__csr___v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Hawkeye + CrossRun-DeadGate (CR-DG) Lite Ensemble",
+    "explainer": {
+      "summary": "The policy combines Hawkeye and CR-DG Lite, utilizing a conservative selector to manage cache lines based on access patterns, aiming for efficient eviction decisions.",
+      "policy_family": [
+        "Hawkeye",
+        "CR-DG Lite"
+      ],
+      "key_data_structures": [
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "Tracks confidence in using Mode B for each cache set",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "follower_bits",
+          "scope": "global",
+          "purpose": "Tracks follower status for each cache set",
+          "bits_per_entry": 1
+        }
+      ],
+      "signals": [
+        "access type",
+        "set index",
+        "epoch count"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "streaming",
+          "temporal locality"
+        ],
+        "weak_workloads": [
+          "random access",
+          "irregular patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": true,
+        "uses_ship": true,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": false,
+        "uses_insertion_bias": false,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 8,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy employs a conservative gating mechanism to balance between two modes, optimizing for different access patterns."
+    },
+    "storage": {
+      "estimate_kb": null
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.398443849202829,
+        "total_hit_rate": 0.39963527413610944,
+        "load_hit_rate": 0.29690414877850335,
+        "rfo_hit_rate": 0.24326767575585334,
+        "prefetch_hit_rate": 0.21293489690996276,
+        "writeback_hit_rate": 0.997228171294735
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/001_hawkeye___crossrun_deadgate__cr_dg__lite_ensemble__v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "HawkRun-TLFU Ensemble",
+    "explainer": {
+      "summary": "The HawkRun-TLFU Ensemble employs a hybrid cache replacement strategy combining Hawkeye-lite and Run-Sieve, optimizing for program context and recency. It adapts dynamically based on workload performance, favoring efficiency and minimal overhead.",
+      "policy_family": [
+        "Hawkeye",
+        "RRIP",
+        "TinyLFU"
+      ],
+      "key_data_structures": [
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "tracks confidence for mode selection",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "follower_bits",
+          "scope": "per-set",
+          "purpose": "indicates follower mode status",
+          "bits_per_entry": 1
+        }
+      ],
+      "signals": [
+        "hit",
+        "miss"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "temporal locality",
+          "SPEC CPU benchmarks"
+        ],
+        "weak_workloads": [
+          "streaming",
+          "random access patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": true,
+        "uses_ship": false,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": false,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 8,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy features a conservative gating mechanism and adapts based on leader-follower sampling to optimize cache performance."
+    },
+    "storage": {
+      "estimate_kb": null
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.40234060919475345,
+        "total_hit_rate": 0.40238840095851736,
+        "load_hit_rate": 0.3074392230997312,
+        "rfo_hit_rate": 0.2595801446720115,
+        "prefetch_hit_rate": 0.20281270159872458,
+        "writeback_hit_rate": 0.9963873150114126
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/000_hawkrun_tlfu_ensemble__v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Mockingjay + HST-E Strict Ensemble (Tuned)",
+    "explainer": {
+      "summary": "The cache replacement policy combines two strategies, Mockingjay and HST-E, optimizing for diverse workloads through leader-follower sampling and dynamic mode selection.",
+      "policy_family": [
+        "Dynamic Ensemble",
+        "Hybrid"
+      ],
+      "key_data_structures": [
+        {
+          "name": "etr",
+          "scope": "per-set",
+          "purpose": "tracks access patterns",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "stores confidence in mode selection",
+          "bits_per_entry": 8
+        }
+      ],
+      "signals": [
+        "access type",
+        "timestamp",
+        "mode selection"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "streaming",
+          "temporal locality"
+        ],
+        "weak_workloads": [
+          "random access",
+          "irregular patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": false,
+        "uses_ship": false,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": false,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 8,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy adapts dynamically based on workload characteristics, leveraging a combination of two distinct cache management strategies."
+    },
+    "storage": {
+      "estimate_kb": null
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.412070154416772,
+        "total_hit_rate": 0.3381331622613637,
+        "load_hit_rate": 0.3034338119323845,
+        "rfo_hit_rate": 0.3035514922490937,
+        "prefetch_hit_rate": 0.2151555477937495,
+        "writeback_hit_rate": 0.6863432423137861
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/000_mockingjay___hst_e_strict_ensemble__tuned___v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Mockingjay + HST-E Strict Ensemble (Baseline)",
+    "explainer": {
+      "summary": "The cache replacement policy combines two strategies, Mockingjay and HST-E, optimizing for both temporal and spatial locality through leader-follower sampling and dynamic mode selection.",
+      "policy_family": [
+        "Dynamic Ensemble",
+        "Hybrid"
+      ],
+      "key_data_structures": [
+        {
+          "name": "etr",
+          "scope": "per-set",
+          "purpose": "track access patterns",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "determine mode preference",
+          "bits_per_entry": 8
+        }
+      ],
+      "signals": [
+        "access type",
+        "timestamp",
+        "mode selection"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "temporal locality",
+          "streaming patterns"
+        ],
+        "weak_workloads": [
+          "random access",
+          "irregular patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": false,
+        "uses_ship": false,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": true,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": 8,
+        "metadata_bits_per_set": null,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy adapts dynamically based on workload characteristics, leveraging both historical access patterns and program context."
+    },
+    "storage": {
+      "estimate_kb": null
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.6450926583564675,
+        "total_hit_rate": 0.401634679984205,
+        "load_hit_rate": 0.37584911041177355,
+        "rfo_hit_rate": 0.3845190799524306,
+        "prefetch_hit_rate": 0.15496911285207823,
+        "writeback_hit_rate": 0.8149835089725
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/003_mockingjay___hst_e_strict_ensemble__baseline___v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Mockingjay + HST-E Strict Ensemble (Baseline)",
+    "explainer": {
+      "summary": "The cache replacement policy combines two strategies, Mockingjay and HST-E, optimizing for both temporal and spatial locality while adapting to workload patterns through leader-follower sampling.",
+      "policy_family": [
+        "Dynamic Ensemble",
+        "Hybrid"
+      ],
+      "key_data_structures": [
+        {
+          "name": "etr",
+          "scope": "per-set",
+          "purpose": "tracks access patterns",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "stores confidence levels for mode selection",
+          "bits_per_entry": 8
+        }
+      ],
+      "signals": [
+        "access type",
+        "timestamp",
+        "mode selection"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "temporal locality",
+          "streaming patterns"
+        ],
+        "weak_workloads": [
+          "random access",
+          "irregular patterns"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": false,
+        "uses_ship": false,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": true,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": null,
+        "metadata_bits_per_set": 8,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy employs a leader-follower mechanism to adaptively select between two modes based on performance metrics."
+    },
+    "storage": {
+      "estimate_kb": null
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.4119817802650531,
+        "total_hit_rate": 0.337763178918353,
+        "load_hit_rate": 0.30333025898737087,
+        "rfo_hit_rate": 0.3037548462493096,
+        "prefetch_hit_rate": 0.21504064563470315,
+        "writeback_hit_rate": 0.6850827599312515
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/003_mockingjay___hst_e_strict_ensemble__baseline___v0.cc"
+  },
+  {
+    "status": "ok",
+    "name": "Mockingjay + HST-E StreamGuard",
+    "explainer": {
+      "summary": "The cache replacement policy combines two modes, Mockingjay and HST-E, optimizing for diverse workloads through leader-follower sampling and strict gating, enhancing performance in both regular and irregular access patterns.",
+      "policy_family": [
+        "Dynamic Ensemble",
+        "Hybrid"
+      ],
+      "key_data_structures": [
+        {
+          "name": "etr",
+          "scope": "per-set",
+          "purpose": "tracks access patterns",
+          "bits_per_entry": 8
+        },
+        {
+          "name": "mode_confidence",
+          "scope": "per-set",
+          "purpose": "stores confidence levels for mode selection",
+          "bits_per_entry": 8
+        }
+      ],
+      "signals": [
+        "access type",
+        "timestamp",
+        "mode selection"
+      ],
+      "expected_behavior": {
+        "strong_workloads": [
+          "SPEC CPU benchmarks",
+          "streaming access patterns"
+        ],
+        "weak_workloads": [
+          "random access patterns",
+          "irregular memory access"
+        ]
+      },
+      "tags": {
+        "uses_lru": false,
+        "uses_rrip": false,
+        "uses_ship": true,
+        "uses_pc_signature": true,
+        "uses_set_dueling": true,
+        "uses_global_counters": false,
+        "uses_insertion_bias": true,
+        "supports_bypass": false,
+        "metadata_bits_per_line": 8,
+        "metadata_bits_per_set": null,
+        "metadata_bits_global": null
+      },
+      "notes": "The policy adapts dynamically based on workload characteristics, leveraging both recency and program context."
+    },
+    "storage": {
+      "estimate_kb": null
+    },
+    "metrics": {
+      "average": {
+        "ipc": 0.41208061007995966,
+        "total_hit_rate": 0.3382349435451325,
+        "load_hit_rate": 0.3035054414882771,
+        "rfo_hit_rate": 0.30365658086154074,
+        "prefetch_hit_rate": 0.2152808353699422,
+        "writeback_hit_rate": 0.6865474264905839
+      }
+    },
+    "code_path": "../ChampSim_CRC2/new_policies/ensemble_strict_v1/000_mockingjay___hst_e_streamguard__v0.cc"
+  }
+]

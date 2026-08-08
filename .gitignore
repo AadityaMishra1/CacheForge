@@ -1,0 +1,35 @@
+*.trace.gz
+traces_gz/
+ChampSim_CRC2/traces_gz/
+*.out
+*.o
+*.db
+DB/
+logs/
+*.log
+__pycache__/
+*.pyc
+cacheforge_env/
+venv/
+.DS_Store
+.env
+src/100M_1M/out/
+src/100M_1M_all_workloads/out/ChampSim_CRC2/traces
+ChampSim_CRC2/traces_gz
+src/top_policies.py
+__pycache__/
+*.pyc
+logs/
+src/__pycache__/
+
+# Claude Code configuration and generated analysis files
+.claude/
+RUN_ANALYSIS.md
+POLICY_README.md
+monitor_progress.py
+verify_changes.sh
+/tmp/
+
+# Keep only essential documentation
+# CLAUDE.md is kept (project instructions)
+# policy.cc is kept (best policy)
