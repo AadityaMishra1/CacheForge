@@ -14,6 +14,13 @@ Built as a three-person course project at NC State.
 OptionsEvolver (https://github.com/AadityaMishra1/OptionsEvolver) applies the
 same approach to implied-volatility surface fitting.
 
+## Report
+
+[CacheForge final report (PDF)](CacheForge_CSC491_Report.pdf), December 2025.
+Table 7 has a transcription error: the CSF IPC for `zeusmp` should be
+`1.362090`, not `0.362090`. The corrected value reproduces the aggregate
+`0.413873` IPC reported in Table 6.
+
 ## Quick start
 
 ## Prereqs
